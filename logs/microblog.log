@@ -1,0 +1,81 @@
+2020-02-13 15:55:37,899 INFO: Microblog startup [in /home/digesto25/dev_repos/microblog/app/__init__.py:43]
+2020-02-13 15:55:43,344 ERROR: Exception on / [GET] [in /usr/lib/python3/dist-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/home/digesto25/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1246, in _execute_context
+    cursor, statement, parameters, context
+  File "/home/digesto25/.local/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 588, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: user
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1610, in full_dispatch_request
+    rv = self.preprocess_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1831, in preprocess_request
+    rv = func()
+  File "/home/digesto25/dev_repos/microblog/app/routes.py", line 12, in before_request
+    if current_user.is_authenticated:
+  File "/usr/lib/python3/dist-packages/werkzeug/local.py", line 347, in __getattr__
+    return getattr(self._get_current_object(), name)
+  File "/usr/lib/python3/dist-packages/werkzeug/local.py", line 306, in _get_current_object
+    return self.__local()
+  File "/home/digesto25/.local/lib/python3.6/site-packages/flask_login/utils.py", line 26, in <lambda>
+    current_user = LocalProxy(lambda: _get_user())
+  File "/home/digesto25/.local/lib/python3.6/site-packages/flask_login/utils.py", line 346, in _get_user
+    current_app.login_manager._load_user()
+  File "/home/digesto25/.local/lib/python3.6/site-packages/flask_login/login_manager.py", line 318, in _load_user
+    user = self._user_callback(user_id)
+  File "/home/digesto25/dev_repos/microblog/app/models.py", line 34, in load_user
+    return User.query.get(int(id))
+  File "/home/digesto25/.local/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 1004, in get
+    return self._get_impl(ident, loading.load_on_pk_identity)
+  File "/home/digesto25/.local/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 1116, in _get_impl
+    return db_load_fn(self, primary_key_identity)
+  File "/home/digesto25/.local/lib/python3.6/site-packages/sqlalchemy/orm/loading.py", line 284, in load_on_pk_identity
+    return q.one()
+  File "/home/digesto25/.local/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 3347, in one
+    ret = self.one_or_none()
+  File "/home/digesto25/.local/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 3316, in one_or_none
+    ret = list(self)
+  File "/home/digesto25/.local/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 3389, in __iter__
+    return self._execute_and_instances(context)
+  File "/home/digesto25/.local/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 3414, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "/home/digesto25/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 982, in execute
+    return meth(self, multiparams, params)
+  File "/home/digesto25/.local/lib/python3.6/site-packages/sqlalchemy/sql/elements.py", line 293, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/home/digesto25/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1101, in _execute_clauseelement
+    distilled_params,
+  File "/home/digesto25/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1250, in _execute_context
+    e, statement, parameters, cursor, context
+  File "/home/digesto25/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1476, in _handle_dbapi_exception
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "/home/digesto25/.local/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 398, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/home/digesto25/.local/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 152, in reraise
+    raise value.with_traceback(tb)
+  File "/home/digesto25/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1246, in _execute_context
+    cursor, statement, parameters, context
+  File "/home/digesto25/.local/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 588, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user
+[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password_hash AS user_password_hash, user.about_me AS user_about_me, user.last_seen AS user_last_seen 
+FROM user 
+WHERE user.id = ?]
+[parameters: (1,)]
+(Background on this error at: http://sqlalche.me/e/e3q8)
+2020-02-20 15:27:28,465 INFO: Microblog startup [in /home/digesto25/dev_repos/microblog/app/__init__.py:77]
+2020-02-20 15:27:38,773 INFO: Microblog startup [in /home/digesto25/dev_repos/microblog/app/__init__.py:77]
+2020-02-20 15:27:47,461 INFO: Microblog startup [in /home/digesto25/dev_repos/microblog/app/__init__.py:77]
+2020-02-20 15:35:05,686 INFO: Microblog startup [in /home/digesto25/dev_repos/microblog/app/__init__.py:77]
+2020-02-20 17:07:06,927 INFO: Microblog startup [in /home/digesto25/dev_repos/microblog/app/__init__.py:77]
